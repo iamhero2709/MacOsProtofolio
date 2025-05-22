@@ -1,0 +1,355 @@
+@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)) {
+  .menu-bar {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #2b85e4, #0c5db3);
+  overflow: hidden;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  user-select: none;
+}
+
+/* Window Styles */
+.window {
+  position: absolute;
+  background: rgba(245, 245, 245, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.window.active {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.window-header {
+  height: 32px;
+  background: linear-gradient(to bottom, #e8e8e8, #d0d0d0);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid #b0b0b0;
+  cursor: move;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.control.close {
+  background: #ff5f56;
+}
+
+.control.minimize {
+  background: #ffbd2e;
+}
+
+.control.maximize {
+  background: #27c93f;
+}
+
+.window-title {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #333;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.window-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* Dock Styles */
+.dock-container {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dock {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0 10px;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.dock-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.dock-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.2s ease;
+}
+
+.dock-item:hover {
+  transform: scale(1.2);
+  margin: 0 10px;
+}
+
+.dock-item.open .indicator {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.dock-item.active img {
+  filter: brightness(1.2);
+}
+
+/* Menu Bar Styles */
+.menu-bar {
+  height: 24px;
+  background: rgba(200, 200, 200, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 12px;
+  color: #333;
+  position: relative;
+  z-index: 1000;
+}
+
+.apple-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.apple-menu:hover .apple-menu-dropdown {
+  display: block;
+}
+
+.apple-menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(245, 245, 245, 0.95);
+  border-radius: 5px;
+  padding: 5px 0;
+  min-width: 180px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.apple-menu-dropdown div {
+  padding: 5px 20px;
+}
+
+.apple-menu-dropdown div:hover {
+  background: #0066cc;
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 5px 0;
+}
+
+.app-menu {
+  display: flex;
+  gap: 15px;
+}
+
+.app-menu span {
+  cursor: pointer;
+}
+
+.app-menu span:hover {
+  color: #0066cc;
+}
+
+/* Desktop Styles */
+.desktop {
+  width: 100%;
+  height: calc(100% - 24px);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-auto-rows: 80px;
+  gap: 20px;
+  align-content: start;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+}
+
+.desktop-icon span {
+  font-size: 12px;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* VS Code Styles */
+.vscode-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  background: #252526;
+  color: #ccc;
+  display: flex;
+}
+
+.activity-bar {
+  width: 48px;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.activity-item {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.activity-item.active {
+  background: #252526;
+  border-left: 2px solid #007acc;
+}
+
+.explorer {
+  flex-grow: 1;
+}
+
+.explorer-header {
+  padding: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.explorer-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.explorer-item:hover {
+  background: #2a2d2e;
+}
+
+.editor {
+  flex-grow: 1;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  height: 35px;
+  background: #252526;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.tab {
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  border-right: 1px solid #1e1e1e;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1e1e1e;
+  color: white;
+}
+
+.editor-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+.editor-content h1 {
+  color: #569cd6;
+  margin-bottom: 20px;
+}
+
+.editor-content p {
+  margin-bottom: 10px;
+}
+
+/* Menu bar transitions */
+.app-menu-item, .apple-menu {
+  transition: background-color 0.2s ease;
+}
+
+.menu-dropdown, .apple-menu-dropdown {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

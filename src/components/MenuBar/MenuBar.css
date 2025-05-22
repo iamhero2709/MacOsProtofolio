@@ -1,0 +1,122 @@
+.menu-bar {
+    height: 28px;
+    background: rgba(240, 240, 240, 0.8);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .apple-menu {
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: default;
+  }
+  
+  .apple-menu:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .apple-logo {
+    font-size: 16px;
+  }
+  
+  .apple-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(245, 245, 245, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+    padding: 6px 0;
+    min-width: 220px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-menu-container {
+    display: flex;
+    gap: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .app-menu-item {
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: default;
+  }
+  
+  .app-menu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-menu-item:hover .menu-dropdown,
+  .app-menu-item:hover .app-menu-dropdown {
+    display: block;
+  }
+  
+  .menu-dropdown, .app-menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(245, 245, 245, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+    padding: 6px 0;
+    min-width: 200px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+  }
+  
+  .menu-item {
+    padding: 4px 20px 4px 25px;
+    position: relative;
+  }
+  
+  .menu-item:hover {
+    background: #007AFF;
+    color: white;
+  }
+  
+  .divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 6px 0;
+  }
+  
+  .shortcut {
+    position: absolute;
+    right: 15px;
+    color: #777;
+  }
+  
+  .menu-item:hover .shortcut {
+    color: white;
+  }
+  
+  .status-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .status-item {
+    font-size: 14px;
+    opacity: 0.8;
+  }
